@@ -1,0 +1,29 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+      target: release # Building the 'release' stage
+    ports:
+      - "3000:3000" # Replace with your application's port if different
+    environment:
+      NODE_ENV: production
+    # If you need to link to other services, add them here. For example, a postgres database.
+    # depends_on:
+    #   - postgres
+    # volumes: #if you need volumes
+    #   - ./your-data:/app/your-data
+  # If you need a postgres database, add it here:
+  # postgres:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_USER: your_user
+  #     POSTGRES_PASSWORD: your_password
+  #     POSTGRES_DB: your_db
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+#volumes: #if you use postgres volume
+#  postgres_data:
